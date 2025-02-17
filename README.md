@@ -74,6 +74,7 @@ https://towardsdatascience.com/machine-learning-in-production-why-you-should-car
 1. Run the data validation on the raw data: london_waether.csv
    is possible to run it from run_great_expectations_raw() present in gx_data_validation.py.
    NB: when you run this function you should se a tab opening such as this one:
+
    ![img.png](gx_image_example.png)
 
 This run will give some error, data should be fixed in order to pass the first raw validation.
@@ -92,11 +93,13 @@ You can also improve the suite adding some extra rules.
    of this readme. Which one respect to random forest and xgboost perform better? why? study the link at the proposed
    section.
    NB: with mlflow you can compare the models, take example from this screenshot:
+
    ![img.png](mlflow_image_example.png)
    NB: to be able to perform this you should run mlflow as a local server. Please run this command on your terminal:
    mlflow server --host 127.0.0.1 --port 8080
    NB: when you train the model you should notice some plot popping, please inspect them!
    They should look like these images:
+
    ![temp_test_set.png](temp_test_set.png)
    ![scatter_plot.png](scatter_plot.png)
    ![training&validation_losses.png](training%26validation_losses.png)
@@ -112,6 +115,7 @@ You can also improve the suite adding some extra rules.
    De-comment it and run again the script, you will see that the curves now are not close as before.
    We just simulate a data drift behaviour!
    The drift in the temperature should be something like this image:
+
    ![data_drift_expectations.png](data_drift_expectations.png)
 
 5. [Optional] Add functions to 'london_weather.csv' in order to show some trends and features
