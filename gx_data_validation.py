@@ -24,11 +24,34 @@ def validate_data(df: pd.DataFrame, data_source_name, data_asset_name, data_batc
 def get_raw_expectations():
     return [
         gx.expectations.ExpectColumnValuesToNotBeNull(column="date", mostly=1),
+        gx.expectations.ExpectColumnValuesToBeIncreasing(column="date", mostly=1),
+
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="max_temp", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="mean_temp", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="min_temp", mostly=1),
+        gx.expectations.ExpectColumnPairValuesAToBeGreaterThanB(column_A="max_temp", column_B="min_temp", mostly=1,
+                                                                or_equal=True),
+        gx.expectations.ExpectColumnPairValuesAToBeGreaterThanB(column_A="mean_temp", column_B="min_temp", mostly=1,
+                                                                or_equal=True),
+        gx.expectations.ExpectColumnPairValuesAToBeGreaterThanB(column_A="max_temp", column_B="mean_temp", mostly=1,
+                                                                or_equal=True),
+
         gx.expectations.ExpectColumnValuesToBeBetween(column="mean_temp", min_value=-50, max_value=60),
         gx.expectations.ExpectColumnValuesToBeBetween(column="precipitation", min_value=0, max_value=100),
         gx.expectations.ExpectColumnValuesToBeBetween(column="snow_depth", min_value=0, max_value=50),
         gx.expectations.ExpectColumnValuesToBeBetween(column="sunshine", min_value=0, max_value=24),
-        gx.expectations.ExpectColumnValuesToBeBetween(column="cloud_cover", min_value=0, max_value=24)
+        gx.expectations.ExpectColumnValuesToBeBetween(column="cloud_cover", min_value=0, max_value=24),
+
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="precipitation", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="snow_depth", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="sunshine", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="cloud_cover", mostly=1),
+        gx.expectations.ExpectColumnValuesToNotBeNull(column="pressure", mostly=1),
+
+        gx.expectations.ExpectColumnValuesToBeBetween(column="pressure",
+                                                      min_value=95000,
+                                                      max_value=105000,
+                                                      mostly=1),
     ]
 
 

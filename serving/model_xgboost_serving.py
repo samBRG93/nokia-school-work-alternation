@@ -10,7 +10,7 @@ from plots import plot_temperature
 def simulate_global_warming(df):
     df["years_since_1979"] = df["year"] - 1979
 
-    warming_factor = 0.02
+    warming_factor = 0.2
 
     df["max_temp"] += df["years_since_1979"] * warming_factor
     df["mean_temp"] += df["years_since_1979"] * (warming_factor * 0.8)
@@ -26,7 +26,7 @@ def get_production_data():
     df = pd.read_csv("baseline_london_weather.csv")
     df["date"] = pd.to_datetime(df["date"], format="%Y-%m-%d")
 
-    df = simulate_global_warming(df)
+    # df = simulate_global_warming(df)
 
     df = df[df["date"].dt.year >= 2019]
 
@@ -36,6 +36,7 @@ def get_production_data():
     y = df[TARGET_COLUMNS]
 
     return X, y
+
 
 def execute_serving():
     df, y = get_production_data()

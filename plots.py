@@ -7,10 +7,10 @@ def plot_loss(loss, plot_name=None, show: bool = True):
     x_axis = range(0, epochs)
     fig, ax = plt.subplots()
     ax.plot(x_axis, loss['validation_0']['rmse'], label='Train')
-    ax.plot(x_axis, loss['validation_1']['rmse'], label='Test')
+    ax.plot(x_axis, loss['validation_1']['rmse'], label='Validation')
     ax.legend()
     plt.ylabel('Regression Mean Squared Error')
-    plt.title('Loss')
+    plt.title('Training and Validation Loss')
 
     if plot_name:
         plt.savefig(plot_name)
@@ -20,6 +20,8 @@ def plot_loss(loss, plot_name=None, show: bool = True):
 
 def plot_scatter(y_test, y_pred, plot_name=None, show: bool = True):
     plt.figure(figsize=(8, 5))
+    import numpy as np
+    y_test = np.array(y_test['mean_temp'])
     plt.scatter(y_test, y_pred, alpha=0.5, color="blue")
     plt.plot([min(y_test), max(y_test)], [min(y_test), max(y_test)], color="red", linestyle="dashed")
     plt.xlabel("Expected Value")
