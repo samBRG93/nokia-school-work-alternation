@@ -77,8 +77,8 @@ https://towardsdatascience.com/machine-learning-in-production-why-you-should-car
 
    ![img.png](gx_image_example.png)
 
-This run will give some error, data should be fixed in order to pass the first raw validation.
-You can also improve the suite adding some extra rules.
+   This run will give some error, data should be fixed in order to pass the first raw validation.
+   You can also improve the suite adding some extra rules.
 
 2. Check the rules of the Great Expectation Baseline Suite. You can notice the presence of some columns which is missing
    in the raw data, this is the part of feature engineering. Implement the function execute_feat_engineering() in
